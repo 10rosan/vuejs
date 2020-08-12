@@ -7,7 +7,14 @@
                     <h3 >Station The Food </h3>
                     <h6 class="mb-0" style="text-align: center;">Food Item Bill </h6>
                 </template>
-                <b-card-text v-for="(value,index) in parentData" :key="index">{{value.name}} - {{value.price}}</b-card-text>
+                <b-card-text v-for="(value,index) in parentData" :key="index">{{value.name}} - {{value.quantity}}</b-card-text>
+                <hr>
+                <div style="background-color:gray; border: 2px solid black; padding: 5px; margin:0; color: white;" >
+                   <span>
+                       Total Amount: {{totalPrice}}
+                    </span> 
+                </div>
+                
                 
                 <template v-slot:footer>
                     <em><b-button  variant="primary"> Print </b-button></em>
@@ -22,8 +29,13 @@
 
 <script>
 export default {
+    computed: {
+        totalPrice() {
+            return this.parentData.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        }
+    },
     props: [
-        'parentData'
+        'parentData',
     ],
     
 

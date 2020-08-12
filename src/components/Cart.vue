@@ -19,7 +19,7 @@
                         <tr v-for="(value,index) in parentData" :key="index">
                         <td>{{value.name}}</td>
                         <td>{{value.price}}</td>
-                        <th scope="row"><b-form-spinbutton class="btn-sm" v-model="value.quantity" id="demo-sb" min="0" max="100"   inline></b-form-spinbutton></th>
+                        <th scope="row">{{value.quantity}}</th>
                         <td><button class="bg-transparent " @click="reduceQuantity(value)" ><b-icon icon="dash-circle-fill" variant="danger"></b-icon> </button></td>
                         
                         </tr>
@@ -31,7 +31,7 @@
                 
                 
                 <template v-slot:footer>
-                    <h5 style="text-align: center;">Total: {{totalPrice}}</h5>
+                    <h5 style="text-align: center;">Total: {{totalPrice}}</h5> 
                     
                     <em><b-button  variant="danger" @click="removeItems()" > Clear Cart </b-button></em>
                         
@@ -46,12 +46,18 @@
 </template>
 
 <script>
+
 export default {
+    name: 'Sidebar',
 
     data() {
         return {
-            totalPrice: 150,
-
+            
+        }
+    },
+    computed: {
+        totalPrice() {
+            return this.parentData.reduce((acc, item) => acc + item.price * item.quantity, 0);
         }
     },
     
@@ -68,13 +74,14 @@ export default {
             this.$emit('setComponentToLoad', 'bill')
         },
         reduceQuantity(value) {
-            value.index = value.index - 1;
+            value.quantity = value.quantity - 1;
 
         },
         removeItems() {
             this.parentData.splice(0, this.parentData.length);
             console.log("Cart is Cleared")
-        }
+        },
+
     }
    
     
