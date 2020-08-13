@@ -3,10 +3,10 @@
     
     <!-- <div class="container">  -->
         <div class="card border-dark " v-if="item" > 
-            <img class="card-img-top" src="../assets/logo.png" alt="" style="height:200px;"> 
+            <img class="card-img-top" :src="item.image" alt="" style="height:200px;"> 
   
-            <div class="card-body bg-dark text-light"> 
-                <h5 class="card-title"> {{ item.name }}</h5> 
+            <div class="card-body bg-light text-dark"> 
+                <h5 class="card-title"> {{ item.item_name }}</h5> 
                 <p class="card-text"> 
                     Price: {{ item.price }} 
                     <b-form-spinbutton class="btn-sm" v-model="numberOfItem" id="demo-sb" min="1" max="100"  style="float: right;" inline></b-form-spinbutton>
@@ -17,7 +17,9 @@
                 </div>
 
             </div> 
-        </div>    
+            
+        </div>
+            
     <!-- </div> 
          -->
         
@@ -31,7 +33,7 @@ export default {
     name: 'MenuItem',
     props: {
         item: {
-            type: Object
+            // type: Array
         }
     },
     data() {
@@ -45,12 +47,12 @@ export default {
         addToCart () {
             console.log('adding to cart')
             let selectedItem = {
-                name: this.item.name,
+                name: this.item.item_name,
                 price: this.item.price,
                 quantity: this.numberOfItem
             }
             this.$emit('addItemToCart', selectedItem)
-            this.numberOfItem = 0
+            this.numberOfItem = 1
             this.$emit('setComponentToLoad', 'cart')
         },
         
