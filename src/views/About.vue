@@ -1,5 +1,6 @@
 <template>
   <b-container fluid>
+    <Navbar />
     <b-row>
       <b-col cols="12" style="background-color: red; height: 350px;">
         
@@ -90,3 +91,8 @@
     </b-row> 
   </b-container>
 </template>
+
+<script>
+
+  
+</script>

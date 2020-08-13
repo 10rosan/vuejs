@@ -33,7 +33,8 @@ export default {
     name: 'MenuItem',
     props: {
         item: {
-            // type: Array
+            type: Object,
+            props: true
         }
     },
     data() {

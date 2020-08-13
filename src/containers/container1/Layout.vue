@@ -1,25 +1,15 @@
 <template>
     <b-container fluid="100%">
-        <div>
-            <Navbar />
+        <Navbar />        
             <div>
-                
                 <router-view></router-view>
             </div>
-            <Footer />
-        </div>
+        
+        <Footer />
         
         
     </b-container>
-    <!-- <div>
-        <Navbar />
-        <div>
-            
-            <router-view></router-view>
-        </div>
-        <Footer />
-        
-    </div> -->
+    
 </template>
 
 <script>
