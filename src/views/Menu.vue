@@ -18,7 +18,7 @@
                 <hr style="background-color: white;">
                 <div class="container">
                     <b-row>                        
-                        <div class="col-sm-4 col-md-4" v-for="(data, index) in foodList " :key="index">                        
+                        <div class="col-sm-4 col-md-4" v-for="(data, index) in foods " :key="index">                        
                             <MenuItem  :item="data" @addItemToCart="addItemToCart" @setComponentToLoad="setComponentToLoad"> </MenuItem>
                         </div>
                        
@@ -59,30 +59,8 @@ export default {
         return {
             cartItem: [],
             isComponent: '',
-            foodList: [],
-            foods: [
-                {"item_name":"Chicken Momo","image":"https://img.taste.com.au/mdKxKxoR/taste/2016/11/chicken-momos-with-tomato-achar-46671-1.jpeg","price":120},
-                {"item_name":"Chicken Chowmein","image":"https://www.cookingclassy.com/wp-content/uploads/2019/01/chow-mein-4.jpg","price":140},
-                {"item_name":"Chicken Sausage","image":"https://kitchenconfidante.com/wp-content/uploads/2014/01/Roasted-Chicken-Sausages-with-Brussels-Sprouts-Fennel-and-Potatoes-Kitchen-Confidante-FEATURED-IMAGE.jpg","price":50},
-                {"item_name":"Chicken Pizza","image":"https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Chicken-Pizza_exps30800_FM143298B03_11_8bC_RMS.jpg","price":400},
-                {"item_name":"Aloo","image":"https://www.corriecooks.com/wp-content/uploads/2018/10/Instant-Pot-French-Fries-new.jpg","price":40},
-                {"item_name":"Chicken Burger","image":"https://www.kitchensanctuary.com/wp-content/uploads/2019/08/Crispy-Chicken-Burger-square-FS-4518.jpg","price":120},
-                {"item_name":"Chicken Chilly","image":"https://maunikagowardhan.co.uk/wp-content/uploads/2014/11/Indo-Chinese-Chilli-Chicken.jpg","price":300},
-                {"item_name":"Buff Momo","image":"https://goodfoodnepal.com/wp-content/uploads/2018/06/BuffMomo.jpg","price":100},
-                {"item_name":"Buff Chowmein","image":"https://nepalicuisines.files.wordpress.com/2016/03/fish-chow-mein.jpg","price":120},
-                {"item_name":"Buff Sausage","image":"https://kitchenconfidante.com/wp-content/uploads/2014/01/Roasted-Chicken-Sausages-with-Brussels-Sprouts-Fennel-and-Potatoes-Kitchen-Confidante-FEATURED-IMAGE.jpg","price":45},
-                {"item_name":"Ham Burger","image":"https://barbecuebible.com/wp-content/uploads/2013/05/featured-great-american-hamburger-1024x640.jpg","price":130},
-                {"item_name":"Cheese Burger","image":"https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg","price":120},
-                {"item_name":"Chicken Spaghetti","image":"https://www.archanaskitchen.com/images/archanaskitchen/0-Archanas-Kitchen-Recipes/2018/May-31/Chicken_Spaghetti_in_Tomato_Basil_Sauce_Recipe_-1.jpg","price":350},
-                {"item_name":"Margarita Pizza","image":"https://img.taste.com.au/DhThzPm9/taste/2016/11/eat-pray-love-39581-3.jpeg","price":300}
-            ] 
-                // {name: 'Momo',price: '120'},
-                // {name: 'Chowmein',price: '140'},
-                // {name: 'Sausage',price: '50'},
-                // {name: 'Burger',price: '100'},
-                // {name: 'Burger',price: '100'},
-                // {name: 'Burger',price: '100'},
-                // {name: 'Burger',price: '100'},
+            foods: []
+           
             
         }
     },
@@ -95,7 +73,7 @@ export default {
             method: 'get',
             url: 'http://3.89.153.127:8000/api/food/list',
             })
-            .then(function (response) {
+            .then((response) => {
                 this.foods = response.data.results
                 // this.foodList.push(response.data.results)
                  console.log('response')
@@ -118,9 +96,8 @@ export default {
             
             } 
             else {
-            this.cartItem.push(data );
-            
-            // console.log(this.cartItem)
+            this.cartItem.push(data );          
+           
             
             }
             
